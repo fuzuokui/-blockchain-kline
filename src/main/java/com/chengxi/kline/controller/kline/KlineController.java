@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,9 +44,11 @@ public class KlineController {
         EosCommonDataExample example = new EosCommonDataExample();
         example.setOrderByClause("id desc");
 //        example.createCriteria().andIdLessThan(10L);
-        PageHelper.offsetPage(0, 20);
+        PageHelper.offsetPage(0, 50);
         List<EosCommonData> eosCommonDataList = eosCommonDataMapper.selectByExample(example);
-        List<KlineDataVO> klineDataVOList = eosCommonDataList.stream().map(eosCommonData -> convertToKlineData(eosCommonData)).collect(Collectors.toList());
+        Collections.sort(eosCommonDataList);
+//        List<KlineDataVO> klineDataVOList = eosCommonDataList.stream().map(eosCommonData -> convertToKlineData(eosCommonData)).collect(Collectors.toList());
+        List<List<Object>> klineDataVOList = eosCommonDataList.stream().map(eosCommonData -> convertToList(eosCommonData)).collect(Collectors.toList());
         return R.ok().put("klineData", klineDataVOList);
     }
 
@@ -56,5 +60,13 @@ public class KlineController {
         vo.setValue(MoneyUtil.fromFenToYuan(data.getPrice()));
         return vo;
     }
+
+    List<Object> convertToList(EosCommonData data){
+        List<Object> list = new ArrayList<>(2);
+        list.add(SDF.format(data.getDataDatetime()));
+        list.add(MoneyUtil.fromFenToYuan(data.getPrice()));
+        return list;
+    }
+
 
 }

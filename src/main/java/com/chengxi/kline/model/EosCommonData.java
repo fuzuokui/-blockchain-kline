@@ -2,7 +2,7 @@ package com.chengxi.kline.model;
 
 import java.util.Date;
 
-public class EosCommonData {
+public class EosCommonData implements Comparable<EosCommonData> {
     private Long id;
 
     private Date dataDatetime;
@@ -41,5 +41,10 @@ public class EosCommonData {
 
     public void setDataSource(String dataSource) {
         this.dataSource = dataSource == null ? null : dataSource.trim();
+    }
+
+    @Override
+    public int compareTo(EosCommonData o) {
+        return this.dataDatetime.compareTo(o.dataDatetime);
     }
 }
