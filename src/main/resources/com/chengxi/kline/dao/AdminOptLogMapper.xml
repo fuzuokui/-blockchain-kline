@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengxi.kline.dao.AdminOptLogMapper">
+  <resultMap id="BaseResultMap" type="com.chengxi.kline.model.AdminOptLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="admin_id" jdbcType="BIGINT" property="adminId" />
+    <result column="request_uri" jdbcType="VARCHAR" property="requestUri" />
+    <result column="request_params" jdbcType="VARCHAR" property="requestParams" />
+    <result column="response_result" jdbcType="VARCHAR" property="responseResult" />
+    <result column="opt_time" jdbcType="TIMESTAMP" property="optTime" />
+    <result column="client_ip" jdbcType="VARCHAR" property="clientIp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, admin_id, request_uri, request_params, response_result, opt_time, client_ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_admin_opt_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_admin_opt_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.chengxi.kline.model.AdminOptLog">
+    insert into sys_admin_opt_log (id, admin_id, request_uri,
+    request_params, response_result, opt_time,
+    client_ip)
+    values (#{id,jdbcType=BIGINT}, #{adminId,jdbcType=BIGINT}, #{requestUri,jdbcType=VARCHAR},
+    #{requestParams,jdbcType=VARCHAR}, #{responseResult,jdbcType=VARCHAR}, #{optTime,jdbcType=TIMESTAMP},
+    #{clientIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chengxi.kline.model.AdminOptLog">
+    insert into sys_admin_opt_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="requestUri != null">
+        request_uri,
+      </if>
+      <if test="requestParams != null">
+        request_params,
+      </if>
+      <if test="responseResult != null">
+        response_result,
+      </if>
+      <if test="optTime != null">
+        opt_time,
+      </if>
+      <if test="clientIp != null">
+        client_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=BIGINT},
+      </if>
+      <if test="requestUri != null">
+        #{requestUri,jdbcType=VARCHAR},
+      </if>
+      <if test="requestParams != null">
+        #{requestParams,jdbcType=VARCHAR},
+      </if>
+      <if test="responseResult != null">
+        #{responseResult,jdbcType=VARCHAR},
+      </if>
+      <if test="optTime != null">
+        #{optTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientIp != null">
+        #{clientIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chengxi.kline.model.AdminOptLog">
+    update sys_admin_opt_log
+    <set>
+      <if test="adminId != null">
+        admin_id = #{adminId,jdbcType=BIGINT},
+      </if>
+      <if test="requestUri != null">
+        request_uri = #{requestUri,jdbcType=VARCHAR},
+      </if>
+      <if test="requestParams != null">
+        request_params = #{requestParams,jdbcType=VARCHAR},
+      </if>
+      <if test="responseResult != null">
+        response_result = #{responseResult,jdbcType=VARCHAR},
+      </if>
+      <if test="optTime != null">
+        opt_time = #{optTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clientIp != null">
+        client_ip = #{clientIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chengxi.kline.model.AdminOptLog">
+    update sys_admin_opt_log
+    set admin_id = #{adminId,jdbcType=BIGINT},
+    request_uri = #{requestUri,jdbcType=VARCHAR},
+    request_params = #{requestParams,jdbcType=VARCHAR},
+    response_result = #{responseResult,jdbcType=VARCHAR},
+    opt_time = #{optTime,jdbcType=TIMESTAMP},
+    client_ip = #{clientIp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
