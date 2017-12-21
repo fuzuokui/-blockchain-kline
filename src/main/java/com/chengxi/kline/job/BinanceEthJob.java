@@ -2,7 +2,6 @@ package com.chengxi.kline.job;
 
 import com.chengxi.kline.dao.EthCommonDataMapper;
 import com.chengxi.kline.model.EthCommonData;
-import com.chengxi.kline.utils.MoneyUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Nullable;
@@ -32,7 +30,6 @@ import java.util.Date;
  * @Date: Created in 10:49 2017/12/18
  * @Modified By:
  */
-//@Service
 public class BinanceEthJob {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BinanceEthJob.class);

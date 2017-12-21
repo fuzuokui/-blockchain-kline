@@ -20,7 +20,13 @@
 		<param-name>webAppRootKey</param-name>
 		<param-value>webPath</param-value>
 	</context-param>
-	
+
+	<context-param>
+		<param-name>spring.profiles.default</param-name>
+		<!--<param-value>development</param-value>-->
+		<param-value>production</param-value>
+	</context-param>
+
 	<listener>
 		<listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
 	</listener>

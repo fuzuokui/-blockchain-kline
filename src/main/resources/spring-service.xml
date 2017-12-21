@@ -21,22 +21,32 @@
 	<mvc:default-servlet-handler />
 	<aop:aspectj-autoproxy/>
 
-	<!-- spring thread pool executor -->
-	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-		<!-- 线程池维护线程的最少数量 -->
-		<property name="corePoolSize" value="5" />
-		<!-- 允许的空闲时间 -->
-		<property name="keepAliveSeconds" value="200" />
-		<!-- 线程池维护线程的最大数量 -->
-		<property name="maxPoolSize" value="10" />
-		<!-- 缓存队列 -->
-		<property name="queueCapacity" value="20" />
-		<!-- 对拒绝task的处理策略 -->
-		<property name="rejectedExecutionHandler">
-			<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
-		</property>
-	</bean>
+	<beans profile="production">
+		<!-- 线上环境，具体加载bean或者properties文件 -->
+		<!-- spring thread pool executor -->
+		<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+			<!-- 线程池维护线程的最少数量 -->
+			<property name="corePoolSize" value="5" />
+			<!-- 允许的空闲时间 -->
+			<property name="keepAliveSeconds" value="200" />
+			<!-- 线程池维护线程的最大数量 -->
+			<property name="maxPoolSize" value="10" />
+			<!-- 缓存队列 -->
+			<property name="queueCapacity" value="20" />
+			<!-- 对拒绝task的处理策略 -->
+			<property name="rejectedExecutionHandler">
+				<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+			</property>
+		</bean>
 
+		<bean id="btcJob" class="com.chengxi.kline.job.BinanceBtcJob" />
+		<bean id="ethJob" class="com.chengxi.kline.job.BinanceEthJob" />
+		<bean id="eosJob" class="com.chengxi.kline.job.BinanceEosJob" />
+		<bean id="rxpJob" class="com.chengxi.kline.job.BinanceRxpJob" />
+		<bean id="trxJob" class="com.chengxi.kline.job.BinanceTrxJob" />
+	</beans>
+
+	<beans>
 	<!--<context:property-placeholder location="classpath:config.properties" />-->
 	<!-- 加载配置文件 -->
 	<bean id="propertyMananger" class="com.chengxi.kline.system.DecryptPropertyPlaceholderConfigurer">
@@ -163,5 +173,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.chengxi.kline.dao" />
 	</bean>
+
+		</beans>
 
 </beans>

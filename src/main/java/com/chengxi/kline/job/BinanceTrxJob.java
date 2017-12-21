@@ -14,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Nullable;
@@ -31,7 +30,6 @@ import java.util.Date;
  * @Date: Created in 16:38 2017/12/21
  * @Modified By:
  */
-@Service
 public class BinanceTrxJob {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BinanceTrxJob.class);
