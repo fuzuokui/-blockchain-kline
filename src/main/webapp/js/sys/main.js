@@ -9,7 +9,7 @@ var vm = new Vue({
     },
     created: function() {
             //this.title = "详情";
-        this.getKLineData();
+        //this.getKLineData();
 
     },
     methods: {

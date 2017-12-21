@@ -32,7 +32,7 @@ import java.util.Date;
  * @Date: Created in 10:49 2017/12/18
  * @Modified By:
  */
-@Service
+//@Service
 public class BinanceEthJob {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BinanceEthJob.class);

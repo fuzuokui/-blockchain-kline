@@ -31,7 +31,7 @@ import java.util.Date;
  * @Date: Created in 11:56 2017/12/18
  * @Modified By:
  */
-@Service
+//@Service
 public class BinanceLtcJob {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BinanceLtcJob.class);

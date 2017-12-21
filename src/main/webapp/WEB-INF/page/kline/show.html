@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KLine show</title>
+    #include("sys/header.html")
+</head>
+<body>
+<div id="rrapp">
+    <div class="panel panel-default">
+        <div class="panel-heading">查询条件</div>
+        <div class="panel-body">
+            <form id="query-form" class="query-form" onsubmit="return false;">
+                <div class="form-group" style="margin-top:15px">
+                    <table>
+                        <tr>
+                            <th>
+                                <label>创建时间：</label>
+                            </th>
+                            <td colspan="3">
+                                <input type="text" class="form-control" style="display: none" name="startTime" id="startTime"/>
+                                <input type="text" class="form-control" style="display: none" name="endTime" id="endTime">
+                                <div class="controls">
+                                    <div id="daterangepicker" class="input-prepend input-group" style="width:100%"  data-date-format="yyyy-mm-dd hh:ii:ss">
+                                        <span class="add-on input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar fa fa-calendar">
+                                            </i>
+                                        </span>
+                                        <input type="text" id="searchDateRange"
+                                               class="form-control" value="请选择起止时间" class="span4" readonly/>
+                                    </div>
+                                </div>
+                            </td>
+                            </tr>
+                            <tr>
+                            <th>
+                                <label>展示：</label>
+                            </th>
+                            <td >
+                                <select class="form-control" name="showCount">
+                                    <option value="50">
+                                        50
+                                    </option>
+                                    <option value="100">
+                                        100
+                                    </option>
+                                    <option value="2000">
+                                        200
+                                    </option>
+                                </select>
+                            </td>
+                            <th>
+                            </th>
+                            <td >
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="col-sm-12" style="text-align: center">
+                        <button type="reset"  class="btn btn-primary">重置</button>
+                        <button type="button"  id="btn_query" class="btn btn-primary">查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table id="jqGrid"></table>
+    <div id="jqGridPager"></div>
+</div>
+<div id="main" style="width: 1000px;height:600px;"></div>
+<script src="../js/kline/show.js"></script>
+</body>
+</html>

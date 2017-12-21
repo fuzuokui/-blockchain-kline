@@ -50,10 +50,11 @@
 
 
         <!--<table tableName="bc_eos_common_data" domainObjectName="EosCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>-->
-        <table tableName="bc_eth_common_data" domainObjectName="EthCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>
-        <table tableName="bc_btc_common_data" domainObjectName="BtcCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>
-        <table tableName="bc_ltc_common_data" domainObjectName="LtcCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>
-        <table tableName="bc_rxp_common_data" domainObjectName="RxpCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>
+        <!--<table tableName="bc_eth_common_data" domainObjectName="EthCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>-->
+        <!--<table tableName="bc_btc_common_data" domainObjectName="BtcCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>-->
+        <!--<table tableName="bc_ltc_common_data" domainObjectName="LtcCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>-->
+        <!--<table tableName="bc_rxp_common_data" domainObjectName="RxpCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>-->
+        <table tableName="bc_trx_common_data" domainObjectName="TrxCommonData" enableCountByExample="true" enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"></table>
 
     </context>
 </generatorConfiguration>

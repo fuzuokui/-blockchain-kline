@@ -1,10 +1,7 @@
 package com.chengxi.kline.job;
 
-import com.chengxi.kline.dao.BtcCommonDataMapper;
-import com.chengxi.kline.dao.BtcCommonDataMapper;
-import com.chengxi.kline.model.BtcCommonData;
-import com.chengxi.kline.utils.MoneyUtil;
-import org.apache.commons.logging.LogFactory;
+import com.chengxi.kline.dao.TrxCommonDataMapper;
+import com.chengxi.kline.model.TrxCommonData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,30 +28,30 @@ import java.util.Date;
 /**
  * @Author: zuokui.fu
  * @Description:
- * @Date: Created in 11:03 2017/12/18
+ * @Date: Created in 16:38 2017/12/21
  * @Modified By:
  */
-//@Service
-public class BinanceBtcJob {
+@Service
+public class BinanceTrxJob {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BinanceTrxJob.class);
 
     @Autowired
     private ThreadPoolTaskExecutor taskExecutor;
     @Autowired
-    private BtcCommonDataMapper btcCommonDataMapper;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(BinanceBtcJob.class);
+    private TrxCommonDataMapper trxCommonDataMapper;
 
     @PostConstruct
     private void doJob(){
-        taskExecutor.execute(new BtcSpiderJob(btcCommonDataMapper));
+        taskExecutor.execute(new TrxSpiderJob(trxCommonDataMapper));
     }
 
-    static class BtcSpiderJob implements Runnable{
+    static class TrxSpiderJob implements Runnable{
 
-        BtcCommonDataMapper mapper;
+        TrxCommonDataMapper mapper;
 
-        BtcSpiderJob(BtcCommonDataMapper btcCommonDataMapper){
-            mapper = btcCommonDataMapper;
+        TrxSpiderJob(TrxCommonDataMapper trxCommonDataMapper){
+            mapper = trxCommonDataMapper;
         }
 
         @Override
@@ -73,7 +70,7 @@ public class BinanceBtcJob {
                 // 创建一个 Chrome 的浏览器实例
                 driver = new RemoteWebDriver(service.getUrl(),
                         DesiredCapabilities.chrome());
-                driver.get("https://www.binance.com/trade.html?symbol=BTC_USDT");
+                driver.get("https://www.binance.com/trade.html?symbol=TRX_ETH");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 endTime = sdf.parse("2020-12-31").getTime();
             } catch (IOException e) {
@@ -94,8 +91,8 @@ public class BinanceBtcJob {
                 String priceFen = priceYuan.replace(".", "");
                 if (StringUtils.hasText(priceFen)) {
 //                    System.out.println(String.format("============================%s", price));
-                    LOGGER.info(String.format("BTC RMB price:%s元", priceYuan));
-                    BtcCommonData data = new BtcCommonData();
+                    LOGGER.info(String.format("TRX RMB price:%s元", priceYuan));
+                    TrxCommonData data = new TrxCommonData();
                     data.setDataDatetime(new Date());
                     data.setPrice(Long.parseLong(priceFen));
                     data.setDataSource(IJob.DATA_SOURCE_BINANCE);

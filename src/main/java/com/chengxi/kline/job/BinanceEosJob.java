@@ -33,7 +33,7 @@ import java.util.Date;
  * @Date: Created in 14:12 2017/12/17
  * @Modified By:
  */
-@Service
+//@Service
 public class BinanceEosJob{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BinanceEosJob.class);

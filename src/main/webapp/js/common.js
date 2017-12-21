@@ -155,7 +155,7 @@ function getSelectedRows() {
     return grid.getGridParam("selarrrow");
 }
 
-function initDaterangepicker(divid, startInputId, endInputId, daterangepickerInputId){
+function initDaterangepicker(divid, startInputId, endInputId, daterangepickerInputId){console.log("come in already!!");
 	$('#' + divid).daterangepicker({
 		//startDate: moment().startOf('day'),
 		//endDate: '12/30/2099',
